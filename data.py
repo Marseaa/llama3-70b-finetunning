@@ -57,7 +57,7 @@ if True:
     model.save_pretrained("model", save_method="merged_16bit")
     tokenizer.save_pretrained("model")
 
-token_marcela = "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"
+token_marcela = "seu token aqui"
 
 # Fazer upload para Hugging Face Hub 
 if True:

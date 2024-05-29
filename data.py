@@ -2,9 +2,9 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trai
 from datasets import load_dataset
 
 # Parâmetros de otimização
-load_in_4bit = True  # Usar quantização de 4 bits
-max_seq_length = 24576  # Escolher qualquer valor adequado, suporte a RoPE Scaling interno
-dtype = None  # Detectar automaticamente, Float16 para Tesla T4, V100, Bfloat16 para Ampere+
+load_in_4bit = True  
+max_seq_length = 24576  
+dtype = None  
 
 # Carregar o tokenizer e o modelo
 model_name = "nvidia/Llama3-ChatQA-1.5-70B"

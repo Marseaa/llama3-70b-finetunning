@@ -1,7 +1,7 @@
 # compose.yml
 services:
     yt:
-        build: 
+        build:
             context: .
             dockerfile: Dockerfile
         image: llama3_imagem_70b-ft:latest
@@ -21,6 +21,20 @@ services:
             - COLORTERM=truecolor
             - CHOKIDAR_USEPOLLING=true
         volumes:
-            - ./data.py:/app/data.py
-        stdin_open: true  # entrada interativa
+            # isso aqui tá errado:
+            #- ./data.py:/app/data.py
+            # prefira usar:
+            - ./app:/app:rw
+            # faça cache dos models para evitar download ao limpar imagens:
+            - ./data/huggingface_cache:/root/.cache/huggingface
+            - ./data/pip_cache:/root/.cache/pip
         tty: true
+        ipc: host
+        ulimits:
+            memlock: -1
+            stack: 67108864
+        shm_size: '8gb'
+        stdin_open: true
+
+        # precisa ativar o runtime nvidia no docker config (veja README.md)
+        runtime: nvidia

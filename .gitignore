@@ -1,0 +1,5 @@
+# não vamos mandar cache de huggingface
+# ou dados do treinamento para o repo.
+data
+
+
